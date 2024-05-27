@@ -18,6 +18,7 @@ interface ITopicCardsProps {
 
 function TopicCard ({topicDescription, topicTitle, avatarProps }: ITopicCardsProps) {
   const [topicLiked, setTopicLiked] = useState(false)
+  const [windowWidth, _] = useState(document.documentElement.clientWidth)
 
   return (
     <CardContainer>
@@ -27,7 +28,7 @@ function TopicCard ({topicDescription, topicTitle, avatarProps }: ITopicCardsPro
         <TopicDescription>{topicTitle}</TopicDescription>
       </TopicInformationsContainer>
       <div>
-        <HiOutlineHeart onClick={() => setTopicLiked(!topicLiked)} fill={topicLiked ? '#ff2929' : '#ffff'}/>
+        <HiOutlineHeart size={windowWidth > 979 ? 30 : 25} onClick={() => setTopicLiked(!topicLiked)} fill={topicLiked ? '#ff2929' : '#ffff'}/>
       </div>
     </CardContainer>
   )
