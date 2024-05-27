@@ -17,16 +17,27 @@ export const HeaderContainer = styled.header`
   }
 `
 export const LinkOptionsContainer = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  width: 50%;
-
-  & > a {
-    cursor: pointer;
-  }
+  display: none;
 
   @media (min-width: 980px) {
+    display: flex;
+    justify-content: space-evenly;
     width: 20%;
+    
+    & > a {
+      cursor: pointer;
+    }
+  }
+`
+export const LinkBurgerOptionsContainer = styled.div`
+  display: flex;
+    justify-content: space-evenly;
+    width: 20%;
+    flex-direction: column;
+
+
+  @media (min-width: 980px) {
+    display: none;
   }
 `
 

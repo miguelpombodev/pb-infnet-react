@@ -1,9 +1,8 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useRef } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { Container, CreateNewTopicContainer, GroupCardContainer, GroupCardList, HeadingContainer, NewTopicButton, NewTopicContent, NewTopicForm, NewTopicTitle } from "./style"
 
-import CreateTopic from "../../components/CreateTopic"
 import Modal from "../../components/Modal"
 import TopicCard from "../../components/TopicCard"
 import { ITopicInfos } from '../../interfaces/Topics'
