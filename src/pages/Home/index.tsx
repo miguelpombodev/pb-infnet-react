@@ -1,5 +1,6 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { v4 as uuidv4 } from 'uuid'
+import axios from 'axios'
 
 import { Container, CreateNewTopicContainer, GroupCardContainer, GroupCardList, HeadingContainer, NewTopicButton, NewTopicContent, NewTopicForm, NewTopicTitle } from "./style"
 
@@ -8,94 +9,12 @@ import TopicCard from "../../components/TopicCard"
 import { ITopicInfos } from '../../interfaces/Topics'
 
 function Home () {
-  const [topics, setNewTopic] = useState<ITopicInfos[]>([
-    {
-      id: uuidv4(),
-      topicTitle: "TOPIC TITLE",
-      topicDescription: "TOPIC DESCRIPTION",
-      avatar_infos: {
-        avatarSourceLink:"https://freepngimg.com/thumb/mario_bros/92438-mario-art-super-thumb-bros-download-free-image.png",
-        avatarAltTitle: "avatar_alt_title",
-        avatarTitle: "avatar_title"
-      }
-    },
-    {
-      id: uuidv4(),
-      topicTitle: "TOPIC TITLE",
-      topicDescription: "TOPIC DESCRIPTION",
-      avatar_infos: {
-        avatarSourceLink:"https://freepngimg.com/thumb/mario_bros/92438-mario-art-super-thumb-bros-download-free-image.png",
-        avatarAltTitle: "avatar_alt_title",
-        avatarTitle: "avatar_title"
-      }
-    },
-    {
-      id: uuidv4(),
-      topicTitle: "TOPIC TITLE",
-      topicDescription: "TOPIC DESCRIPTION",
-      avatar_infos: {
-        avatarSourceLink:"https://freepngimg.com/thumb/mario_bros/92438-mario-art-super-thumb-bros-download-free-image.png",
-        avatarAltTitle: "avatar_alt_title",
-        avatarTitle: "avatar_title"
-      }
-    },
-    {
-      id: uuidv4(),
-      topicTitle: "TOPIC TITLE",
-      topicDescription: "TOPIC DESCRIPTION",
-      avatar_infos: {
-        avatarSourceLink:"https://freepngimg.com/thumb/mario_bros/92438-mario-art-super-thumb-bros-download-free-image.png",
-        avatarAltTitle: "avatar_alt_title",
-        avatarTitle: "avatar_title"
-      }
-    },
-    {
-      id: uuidv4(),
-      topicTitle: "TOPIC TITLE",
-      topicDescription: "TOPIC DESCRIPTION",
-      avatar_infos: {
-        avatarSourceLink:"https://freepngimg.com/thumb/mario_bros/92438-mario-art-super-thumb-bros-download-free-image.png",
-        avatarAltTitle: "avatar_alt_title",
-        avatarTitle: "avatar_title"
-      }
-    },
-    {
-      id: uuidv4(),
-      topicTitle: "TOPIC TITLE",
-      topicDescription: "TOPIC DESCRIPTION",
-      avatar_infos: {
-        avatarSourceLink:"https://freepngimg.com/thumb/mario_bros/92438-mario-art-super-thumb-bros-download-free-image.png",
-        avatarAltTitle: "avatar_alt_title",
-        avatarTitle: "avatar_title"
-      }
-    },
-    {
-      id: uuidv4(),
-      topicTitle: "TOPIC TITLE",
-      topicDescription: "TOPIC DESCRIPTION",
-      avatar_infos: {
-        avatarSourceLink:"https://freepngimg.com/thumb/mario_bros/92438-mario-art-super-thumb-bros-download-free-image.png",
-        avatarAltTitle: "avatar_alt_title",
-        avatarTitle: "avatar_title"
-      }
-    },
-    {
-      id: uuidv4(),
-      topicTitle: "TOPIC TITLE",
-      topicDescription: "TOPIC DESCRIPTION",
-      avatar_infos: {
-        avatarSourceLink:"https://freepngimg.com/thumb/mario_bros/92438-mario-art-super-thumb-bros-download-free-image.png",
-        avatarAltTitle: "avatar_alt_title",
-        avatarTitle: "avatar_title"
-      }
-    },
-  ])
+  const [topics, setNewTopic] = useState<ITopicInfos[]>([])
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const topicTitle = useRef(null)
   const topicContent = useRef(null)
 
   function sendNewTopicSubmit(event: Event) {
-    console.log(event)
     event.preventDefault()
 
     setNewTopic([...topics, {
@@ -110,6 +29,22 @@ function Home () {
     }])
     setModalIsOpen(false)
   }
+
+  const getPostFromAPI = async () => {
+    const response = await axios.get<ITopicInfos[]>('/posts.json')
+
+    return response.data
+  }
+
+  useEffect(() => {
+    async function fetchData () {
+      const responseData = await getPostFromAPI()
+
+      setNewTopic(responseData)
+    }
+
+    fetchData()
+  })
 
   return (
     <Container>
