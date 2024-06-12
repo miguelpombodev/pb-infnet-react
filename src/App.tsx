@@ -14,15 +14,15 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Header />
-      <Main>
         <Router>
-          <Routes>
-            <Route path="/" element={<Home />}/> 
-            <Route path="/posts" element={<Posts />}/> 
-          </Routes>
+        <Header />
+          <Main>
+            <Routes>
+              <Route index path="/" element={<Home />}/> 
+              <Route path="/posts" element={<Posts />}/> 
+            </Routes>
+          </Main>
         </Router>
-      </Main>
     </ThemeProvider>
   )
 }

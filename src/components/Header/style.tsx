@@ -16,7 +16,7 @@ export const HeaderContainer = styled.header`
     height: 3.5rem;
   }
 `
-export const LinkOptionsContainer = styled.div`
+export const LinkOptionsContainer = styled.nav`
   display: none;
 
   @media (min-width: 980px) {
@@ -26,6 +26,15 @@ export const LinkOptionsContainer = styled.div`
     
     & > a {
       cursor: pointer;
+    }
+
+    & > a:visited {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    & >a:active {
+      color: #fff;
     }
   }
 `

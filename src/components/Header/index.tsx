@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { CiSearch } from 'react-icons/ci'
 
 import { HeaderContainer, LinkBurgerOptionsContainer, LinkOptionsContainer, SearchInput, SearchInputContainer } from "./style"
@@ -11,8 +12,8 @@ function Header () {
     <HeaderContainer>
       <img src="/logo.png" width={100}/>
       <LinkOptionsContainer>
-        <a>Home</a>
-        <a>Tópicos</a>
+        <Link to="/">Home</Link>
+        <Link to="/posts">Tópicos</Link>
         <a>Grupos</a>
         <a>FAQs</a>
         <a>Conta</a>
