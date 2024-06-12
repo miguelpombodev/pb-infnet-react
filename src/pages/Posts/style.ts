@@ -13,6 +13,10 @@ export const GroupCardContainer = styled.div`
   background-color: ${(theme.colors.WHITE)};
   margin: 20px 0;
   border-radius: 10px;
+
+  & > h1 {
+    font-size: 2.5rem;
+  }
 `
 
 export const GroupCardList = styled.div`

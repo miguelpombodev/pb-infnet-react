@@ -26,6 +26,7 @@ function Posts () {
   return (
     <Container>
       <GroupCardContainer>
+      <h1>Todos os Tópicos</h1>
         <GroupCardList>
           {
             data.length > 0 ? (
