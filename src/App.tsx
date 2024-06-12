@@ -9,6 +9,7 @@ import Main from "./components/Main"
 
 import Home from "./pages/Home"
 import Posts from "./pages/Posts"
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
               <Route path="/posts" element={<Posts />}/> 
             </Routes>
           </Main>
+        <Footer />
         </Router>
     </ThemeProvider>
   )
