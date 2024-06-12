@@ -12,7 +12,6 @@ interface BurgerMenuOptionsProps {
 
 
 export function BurgerMenu ({ openMenu, setOpenMenuByBurger }: BurgerMenuProps) {
-console.log(openMenu)
   return (
     <>
       { openMenu ? 

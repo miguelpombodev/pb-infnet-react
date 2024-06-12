@@ -1,9 +1,14 @@
 import { ThemeProvider } from "styled-components"
-import Header from "./components/Header"
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import theme from "./global/styles/theme"
 import GlobalStyle from "./global/styles/globalStyles"
-import Home from "./pages/Home"
+
+import Header from "./components/Header"
 import Main from "./components/Main"
+
+import Home from "./pages/Home"
+import Posts from "./pages/Posts"
 
 function App() {
   return (
@@ -11,7 +16,12 @@ function App() {
       <GlobalStyle />
       <Header />
       <Main>
-        <Home />
+        <Router>
+          <Routes>
+            <Route path="/" element={<Home />}/> 
+            <Route path="/posts" element={<Posts />}/> 
+          </Routes>
+        </Router>
       </Main>
     </ThemeProvider>
   )
