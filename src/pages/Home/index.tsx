@@ -25,7 +25,9 @@ function Home () {
         avatarSourceLink:"https://freepngimg.com/thumb/mario_bros/92438-mario-art-super-thumb-bros-download-free-image.png",
         avatarAltTitle: "avatar_alt_title",
         avatarTitle: "avatar_title"
-      }
+      },
+      comments_count: 0,
+      likes_count: 0
     }])
     setModalIsOpen(false)
   }
@@ -73,7 +75,10 @@ function Home () {
               key={topic.id} 
               topicTitle={topic.topicTitle} 
               topicDescription={topic.topicDescription}
-              avatarProps={topic.avatar_infos}/>
+              avatarProps={topic.avatar_infos}
+              commentsQuantity={topic.comments_count}
+              likesQuantity={topic.likes_count}
+              />
           ))
         }
         </GroupCardList>

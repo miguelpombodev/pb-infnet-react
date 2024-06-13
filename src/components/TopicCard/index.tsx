@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { HiOutlineHeart } from "react-icons/hi";
+import { FaRegComment } from "react-icons/fa";
 
 import AvatarImage from "../AvatarImage";
-import { CardContainer, TopicDescription, TopicInformationsContainer, TopicTitle } from "./style";
+import { CardContainer, CommentsAndLikesContainer, TopicDescription, TopicInformationsContainer, TopicTitle } from "./style";
 
 interface IAvatarProps {
   avatarSourceLink: string
@@ -13,10 +14,12 @@ interface IAvatarProps {
 interface ITopicCardsProps {
   topicTitle: string,
   topicDescription: string,
-  avatarProps?: IAvatarProps
+  avatarProps?: IAvatarProps,
+  likesQuantity: number,
+  commentsQuantity: number
 }
 
-function TopicCard ({topicDescription, topicTitle, avatarProps }: ITopicCardsProps) {
+function TopicCard ({topicDescription, topicTitle, avatarProps, likesQuantity, commentsQuantity }: ITopicCardsProps) {
   const [topicLiked, setTopicLiked] = useState(false)
   const [windowWidth, _] = useState(document.documentElement.clientWidth)
 
@@ -31,9 +34,10 @@ function TopicCard ({topicDescription, topicTitle, avatarProps }: ITopicCardsPro
         <TopicTitle>{topicTitle}</TopicTitle>
         <TopicDescription>{topicDescription}</TopicDescription>
       </TopicInformationsContainer>
-      <div>
-        <HiOutlineHeart size={windowWidth > 979 ? 30 : 25} onClick={() => setTopicLiked(!topicLiked)} fill={topicLiked ? '#ff2929' : '#ffff'}/>
-      </div>
+      <CommentsAndLikesContainer>
+        <span><HiOutlineHeart size={windowWidth > 979 ? 30 : 25} onClick={() => setTopicLiked(!topicLiked)} fill={topicLiked ? '#ff2929' : '#ffff'}/>{likesQuantity}</span>
+        <span><FaRegComment size={windowWidth > 979 ? 30 : 25} fill=''/>{commentsQuantity}</span>
+      </CommentsAndLikesContainer>
     </CardContainer>
   )
 }

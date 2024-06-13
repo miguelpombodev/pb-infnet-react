@@ -33,3 +33,14 @@ export const TopicDescription = styled.span`
   color: ${(theme.colors.BLACK)};
   font-size: 15px;
 `
+
+export const CommentsAndLikesContainer = styled.div`
+  display: flex;
+  
+  &  > span {
+    margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
+`

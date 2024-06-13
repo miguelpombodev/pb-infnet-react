@@ -9,4 +9,6 @@ export interface ITopicInfos {
   topicTitle: string,
   topicDescription: string,
   avatar_infos: IAvatarInfos
+  comments_count: number,
+  likes_count: number
 }
