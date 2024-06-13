@@ -17,6 +17,13 @@ function Posts () {
   useEffect(() => {
     async function fetchData() {
       const response = await getApiData()
+
+      response.forEach(post => {
+        post.likes_count = Math.floor(Math.random() * 101)
+        post.comments_count = Math.floor(Math.random() * 101)
+        return post
+      });
+
       setTimeout(() => setData(response), 2000)
     }
 
@@ -35,6 +42,8 @@ function Posts () {
                 key={post.id} 
                 topicTitle={post.title} 
                 topicDescription={post.body}
+                likesQuantity={post.likes_count}
+                commentsQuantity={post.comments_count}
                 />
               ))
             ) : (
