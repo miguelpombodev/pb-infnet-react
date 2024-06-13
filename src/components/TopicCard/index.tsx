@@ -12,6 +12,7 @@ interface IAvatarProps {
 }
 
 interface ITopicCardsProps {
+  topicId: string,
   topicTitle: string,
   topicDescription: string,
   avatarProps?: IAvatarProps,
@@ -19,18 +20,18 @@ interface ITopicCardsProps {
   commentsQuantity: number
 }
 
-function TopicCard ({topicDescription, topicTitle, avatarProps, likesQuantity, commentsQuantity }: ITopicCardsProps) {
+function TopicCard ({topicId, topicDescription, topicTitle, avatarProps, likesQuantity, commentsQuantity }: ITopicCardsProps) {
   const [topicLiked, setTopicLiked] = useState(false)
-  const [windowWidth, _] = useState(document.documentElement.clientWidth)
+  const [windowWidth] = useState(document.documentElement.clientWidth)
 
   return (
     <CardContainer>
       <AvatarImage 
-          avatarSourceLink={avatarProps?.avatarSourceLink || "https://static-00.iconduck.com/assets.00/avatar-default-symbolic-icon-479x512-n8sg74wg.png"} 
-          avatarAltTitle={avatarProps?.avatarAltTitle || "default_user"} 
-          avatarTitle={avatarProps?.avatarTitle || "default_user"}
+          avatarSourceLink={avatarProps?.avatarSourceLink} 
+          avatarAltTitle={avatarProps?.avatarAltTitle} 
+          avatarTitle={avatarProps?.avatarTitle}
         />
-      <TopicInformationsContainer>
+      <TopicInformationsContainer  to={`/posts/${topicId}`}>
         <TopicTitle>{topicTitle}</TopicTitle>
         <TopicDescription>{topicDescription}</TopicDescription>
       </TopicInformationsContainer>

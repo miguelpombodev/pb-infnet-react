@@ -73,6 +73,7 @@ function Home () {
           topics.map(topic => (
             <TopicCard 
               key={topic.id} 
+              topicId={topic.id} 
               topicTitle={topic.topicTitle} 
               topicDescription={topic.topicDescription}
               avatarProps={topic.avatar_infos}
