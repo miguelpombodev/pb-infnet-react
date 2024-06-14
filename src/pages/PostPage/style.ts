@@ -38,20 +38,44 @@ export const TopicContainer = styled.article`
   width: 90vw;
   border: 2px solid ${(theme.colors.MAIN_BLUE)};
   padding: 10px;
+  flex-direction: column;
   border-radius: 8px;
+
+  @media (min-width: 980px) {
+      flex-direction: row;
+      font-size: 33px;
+  }
 `
 
 export const AvatarTopicContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   flex: 0.25;
+  width: 90%;
+  
+  & > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-  & > p {
+  & > div > p {
     font-size: 1.5rem;
     margin-top: 10px;
   }
+
+  & > div > span {
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+
+  @media (min-width: 980px) {
+    justify-content: center;
+    flex-direction: column;
+  }
+
 `
 
 export const AvatarBadge = styled.span`
@@ -71,6 +95,11 @@ export const TopicDescriptionContainer = styled.div`
   padding: 10px;
   border: 1px solid ${(theme.colors.BLACK)};
   border-radius: 10px;
+  width: 90%;
+
+  @media (min-width: 980px) {
+      width: auto;
+  }
 `
 
 export const TopicDescriptionDate = styled.span`

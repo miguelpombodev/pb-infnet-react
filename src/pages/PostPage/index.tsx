@@ -16,8 +16,10 @@ function PostPage () {
       <TopicContainer>
         <AvatarTopicContainer>
           <AvatarImage avatarSourceLink={location.avatarProps?.avatarSourceLink} avatarAltTitle={location.avatarProps?.avatarAltTitle} avatarTitle={location.avatarProps?.avatarTitle}/>
-          <p>Nome Autor</p>
-          <span>Nome Grupo</span>
+          <div>
+            <p>Nome Autor</p>
+            <span>Nome Grupo</span>
+          </div>
           <AvatarBadge>Badge Autor</AvatarBadge>
         </AvatarTopicContainer>
         <TopicDescriptionContainer>
@@ -28,8 +30,10 @@ function PostPage () {
       <TopicContainer>
         <AvatarTopicContainer>
           <AvatarImage />
-          <p>Nome Autor</p>
-          <span>Nome Grupo</span>
+          <div>
+            <p>Nome Autor</p>
+            <span>Nome Grupo</span>
+          </div>
           <AvatarBadge>Badge Autor</AvatarBadge>
         </AvatarTopicContainer>
         <TopicDescriptionContainer>

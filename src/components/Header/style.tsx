@@ -30,10 +30,10 @@ export const LinkOptionsContainer = styled.nav`
 
     & > a:visited {
       color: #fff;
-      text-decoration: none;
     }
 
-    & >a:active {
+    & >a:link {
+      text-decoration: none;
       color: #fff;
     }
   }
