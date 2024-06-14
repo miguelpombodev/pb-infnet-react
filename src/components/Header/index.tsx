@@ -15,7 +15,7 @@ function Header () {
         <Link to="/">Home</Link>
         <Link to="/posts">Tópicos</Link>
         <Link to="/groups">Grupos</Link>
-        <a>FAQs</a>
+        <Link to="/ranking">Ranking</Link>
         <Link to="/user">Conta</Link>
       </LinkOptionsContainer>
       <SearchInputContainer>
@@ -32,7 +32,7 @@ function Header () {
           <Link to="/">Home</Link>
           <Link to="/posts">Tópicos</Link>
           <Link to="/groups">Grupos</Link>
-          <a>FAQs</a>
+          <Link to="/ranking">Ranking</Link>
           <Link to="/user">Conta</Link>
         </LinkBurgerOptionsContainer>
       </BurgerMenuOptions>
