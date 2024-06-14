@@ -6,6 +6,7 @@ export default {
     LIGHTER_GRAY: "#D3D3D3",
     MEDIUM_GRAY: "#A2A2A2",
     DARKER_GRAY: "#c4c4c4",
+    MEDIUM_RED: "#FF2626"
   },
 
   fonts: {

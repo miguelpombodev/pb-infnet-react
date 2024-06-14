@@ -16,7 +16,7 @@ function Header () {
         <Link to="/posts">Tópicos</Link>
         <Link to="/groups">Grupos</Link>
         <a>FAQs</a>
-        <a>Conta</a>
+        <Link to="/user">Conta</Link>
       </LinkOptionsContainer>
       <SearchInputContainer>
         <CiSearch size={28}/>
@@ -33,7 +33,7 @@ function Header () {
           <Link to="/posts">Tópicos</Link>
           <Link to="/groups">Grupos</Link>
           <a>FAQs</a>
-          <a>Conta</a>
+          <Link to="/user">Conta</Link>
         </LinkBurgerOptionsContainer>
       </BurgerMenuOptions>
     </HeaderContainer>
