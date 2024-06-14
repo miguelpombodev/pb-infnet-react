@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import Form from "../../components/Form";
 import { Container, FormContentContainer, FormErrorMessage, FormHeader, FormInput, FormInputLabel, FormSubmitButton, InputContentContainer } from "./style";
 import UserProfile from "../../components/UserProfile";
+import { UserContext } from "../../context";
 
 function UserPage () {
-  const [signUpUser, setSignUpUser] = useState(false);
   const [nome, setNome] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
@@ -13,6 +13,8 @@ function UserPage () {
   const [erroPassword, setErroPassword] = useState('');
   const [erroEmail, setErroEmail] = useState('');
   const [isFormValid, setIsFormValid] = useState(false);
+
+  const { userLogged, setUserLogged } = useContext(UserContext)
 
   const validarNome = () => {
     if (nome.trim() === '' || /[^a-zA-Z\s]/.test(nome)) {
@@ -81,15 +83,28 @@ function UserPage () {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isFormValid) {
-      setSignUpUser(true)
+      setUserLogged(true)
+      localStorage.setItem("userLogged", JSON.stringify(true))
     } else {
       alert('Por favor, corrija os erros antes de enviar.');
     }
   };
 
+  useEffect(() => {
+    const hasUserLogged = localStorage.getItem("userLogged")
+
+    if(!hasUserLogged) {
+      setUserLogged(false)
+      return;
+    }
+
+    const getLoggedUserValue = Boolean(JSON.parse(hasUserLogged))
+    setUserLogged(getLoggedUserValue)
+  }, [])
+
   return (
     <Container>
-      { !signUpUser ?
+      { !userLogged ?
         (
           <Form handleSubmit={handleSubmit}>
           <FormHeader>
@@ -132,7 +147,7 @@ function UserPage () {
           </FormContentContainer>
           <FormSubmitButton type="submit" disabled={!isFormValid}>Enviar</FormSubmitButton>
         </Form>
-      ) : <UserProfile />
+      ) : userLogged && (<UserProfile />)
     }
     </Container>
   )
