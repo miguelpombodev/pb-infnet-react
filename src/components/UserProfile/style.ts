@@ -7,12 +7,11 @@ export const Container = styled.div`
   border-radius: 10px;
   width: 81vw;
   padding: 20px;
-  height: 50%;
   flex-direction: column;
 
   @media (min-width: 980px) {
-  flex-direction: row;
-  width: 60%;
+    flex-direction: row;
+    width: 60%;
   }
 `
 
@@ -27,8 +26,8 @@ export const AvatarContainer = styled.div`
   }
 
   @media (min-width: 980px) {
-  border-right: 1px solid #000;
-  height: 80%;
+    border-right: 1px solid #000;
+    height: 80%;
     padding: 0 20px;
   }
 `
@@ -59,12 +58,28 @@ export const TopicsListContainer = styled.div`
   flex-direction: column;
   align-items: center;
 
-  & > div {
-    width: 100%;
-  }
+
 `
 
 export const NoTopicsMessage = styled.span`
   font-size: 1.5rem;
   color: ${(theme.colors.LIGHTER_GRAY)};
+`
+
+export const SingleTopicContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  width: 89vw;
+
+  & > div {
+    @media (min-width: 980px) {
+      width: 76%;
+  }
+  }
+
+  @media (min-width: 980px) {
+    width: 100%;
+  }
 `
