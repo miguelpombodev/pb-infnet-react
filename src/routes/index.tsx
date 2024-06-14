@@ -4,6 +4,7 @@ import Home from '../pages/Home';
 import Posts from '../pages/Posts';
 import PostPage from '../pages/PostPage';
 import NotFound from '../pages/NotFound';
+import Groups from '../pages/Groups';
 
 function RoutesPaths () {
   return (
@@ -11,6 +12,7 @@ function RoutesPaths () {
       <Route index path="/" element={<Home />}/> 
       <Route path="/posts" element={<Posts />}></Route>
       <Route path='/posts/:id' element={<PostPage />}/>
+      <Route path="/groups" element={<Groups />}></Route>
       <Route path='*' element={<NotFound />}/>
     </Routes>
   )

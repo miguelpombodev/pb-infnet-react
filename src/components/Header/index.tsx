@@ -14,7 +14,7 @@ function Header () {
       <LinkOptionsContainer>
         <Link to="/">Home</Link>
         <Link to="/posts">Tópicos</Link>
-        <a>Grupos</a>
+        <Link to="/groups">Grupos</Link>
         <a>FAQs</a>
         <a>Conta</a>
       </LinkOptionsContainer>
@@ -31,7 +31,7 @@ function Header () {
         <LinkBurgerOptionsContainer>
           <Link to="/">Home</Link>
           <Link to="/posts">Tópicos</Link>
-          <a>Grupos</a>
+          <Link to="/groups">Grupos</Link>
           <a>FAQs</a>
           <a>Conta</a>
         </LinkBurgerOptionsContainer>
