@@ -6,6 +6,8 @@ export interface IAvatarInfos {
 
 export interface ITopicInfos {
   id: string,
+  authorName: string,
+  groupName: string,
   topicTitle: string,
   topicDescription: string,
   avatar_infos: IAvatarInfos
@@ -15,6 +17,8 @@ export interface ITopicInfos {
 
 export interface ITopicCardsComponentProps {
   topicId: string,
+  authorName: string,
+  groupName: string,
   topicTitle: string,
   topicDescription: string,
   avatarProps?: IAvatarInfos,

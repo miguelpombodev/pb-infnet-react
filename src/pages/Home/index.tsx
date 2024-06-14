@@ -79,6 +79,8 @@ function Home () {
               avatarProps={topic.avatar_infos}
               commentsQuantity={topic.comments_count}
               likesQuantity={topic.likes_count}
+              authorName={topic.authorName}
+              groupName={topic.groupName}
               />
           ))
         }

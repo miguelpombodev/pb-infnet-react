@@ -97,14 +97,20 @@ export const TopicDescriptionContainer = styled.div`
   border-radius: 10px;
   width: 90%;
 
+  & > div {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid ${(theme.colors.DARKER_GRAY)};
+    padding-bottom: 3px;
+  }
+
   @media (min-width: 980px) {
       width: auto;
   }
 `
 
 export const TopicDescriptionDate = styled.span`
-border-bottom: 1px solid ${(theme.colors.DARKER_GRAY)};
-padding-bottom: 3px;
+font-size: 1.5rem;
 `
 
 export const TopicDescriptionArea = styled.textarea`
