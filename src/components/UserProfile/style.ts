@@ -5,15 +5,18 @@ export const Container = styled.div`
   display: flex;
   border: 1px solid black;
   border-radius: 10px;
-  width: 60%;
+  width: 81vw;
   padding: 20px;
   height: 50%;
+  flex-direction: column;
+
+  @media (min-width: 980px) {
+  flex-direction: row;
+  width: 60%;
+  }
 `
 
 export const AvatarContainer = styled.div`
-  border-right: 1px solid #000;
-  height: 80%;
-  padding: 0 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,6 +24,12 @@ export const AvatarContainer = styled.div`
 
   & > span {
     font-size: 1.25rem;
+  }
+
+  @media (min-width: 980px) {
+  border-right: 1px solid #000;
+  height: 80%;
+    padding: 0 20px;
   }
 `
 

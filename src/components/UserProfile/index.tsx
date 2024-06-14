@@ -12,7 +12,7 @@ interface ILoggedUserProps {
 }
 function UserProfile (loggedUser: ILoggedUserProps) {
   const { userTopics } = useContext(TopicsContexts)
-  console.log(userTopics)
+  
   return (
     <Container>
       <AvatarContainer>
