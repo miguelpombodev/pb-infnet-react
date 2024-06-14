@@ -3,10 +3,15 @@ import axios from "axios";
 import { useParams, useLocation } from "react-router-dom";
 import { HiOutlineHeart } from "react-icons/hi";
 
-
 import { AvatarBadge, AvatarTopicContainer, Container, ContainerHeader, TopicContainer, TopicDescriptionArea, TopicDescriptionContainer, TopicDescriptionDate } from "./style";
 import AvatarImage from "../../components/AvatarImage";
 import { ITopicCardsComponentProps, ITopicComments } from "../../interfaces/Topics";
+import { IGroups } from "../../interfaces/Groups";
+
+interface IResponses {
+  commentsResponse: ITopicComments[];
+  groupsResponse: IGroups[];
+}
 
 function PostPage () {
   const params = useParams();
@@ -15,10 +20,14 @@ function PostPage () {
   const [topicLiked, setTopicLiked] = useState(false)
   const location = useLocation().state as ITopicCardsComponentProps
 
-  async function getCommentsFromAPI (): Promise<ITopicComments[]> {
-    const response = await axios.get<ITopicComments[]>('https://jsonplaceholder.typicode.com/posts/1/comments')
+  async function getCommentsFromAPI (): Promise<IResponses> {
+    const commentsResponse = await axios.get<ITopicComments[]>('https://jsonplaceholder.typicode.com/posts/1/comments')
+    const groupsResponse = await axios.get<IGroups[]>('/groups.json')
 
-    return response.data
+    return {
+        commentsResponse: commentsResponse.data,
+        groupsResponse: groupsResponse.data
+    }
   }
 
   const randomDate = () => {
@@ -29,10 +38,11 @@ function PostPage () {
 
   useEffect(() => {
     async function fetchCommentsData () {
-      const commentsResponse = await getCommentsFromAPI()
-
+      const { commentsResponse, groupsResponse } = await getCommentsFromAPI()
+      
       commentsResponse.forEach(comment => {
         comment.date = randomDate()
+        comment.group = groupsResponse[Math.floor(Math.random() * groupsResponse.length + 1)].name
         return comment
       }); 
       
@@ -67,13 +77,13 @@ function PostPage () {
       </TopicContainer>
       {comments && comments.sort(
         (previousDate, currentDate) => (previousDate.date > currentDate.date) ? 1 : ((currentDate.date > previousDate.date) ? -1 : 0)
-      ).map(comment => (
-      <TopicContainer>
+      ).map((comment, idx) => (
+      <TopicContainer key={idx}>
         <AvatarTopicContainer>
           <AvatarImage />
           <div>
             <p>{comment.name}</p>
-            <span>Nome Grupo</span>
+            <span>{comment.group}</span>
           </div>
           <AvatarBadge>Badge Autor</AvatarBadge>
         </AvatarTopicContainer>

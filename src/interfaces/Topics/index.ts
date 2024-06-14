@@ -31,4 +31,5 @@ export interface ITopicComments {
   name: string;
   body: string;
   date?: string;
+  group: string;
 }
