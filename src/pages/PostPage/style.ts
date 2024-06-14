@@ -103,6 +103,12 @@ export const TopicDescriptionContainer = styled.div`
     padding-bottom: 3px;
   }
 
+  & > div > span {
+    display: flex;
+    width: 5%;
+    gap:10px;
+  }
+
   @media (min-width: 980px) {
       width: auto;
   }
@@ -118,4 +124,37 @@ export const TopicDescriptionArea = styled.textarea`
   border-radius: 8px;
   border: none;
   padding-top: 10px;
+`
+
+export const NewCommentContainer = styled.div`
+  background-color: ${(theme.colors.MAIN_BLUE)};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-around;
+  border-radius: 10px;
+  padding: 20px;
+  width: 89vw;
+`
+
+export const NewCommentInput = styled.textarea`
+  border: none;
+  background-color: ${(theme.colors.WHITE)};
+  padding: 20px;
+  outline: none;
+  flex: 1;
+  margin-right: 35px;
+  border-radius: 10px;
+  resize: none;
+`
+
+export const NewCommentButton = styled.button`
+  border: none;
+  background-color: ${(theme.colors.WHITE)};
+  color: ${(theme.colors.MAIN_BLUE)};
+  padding: 20px;
+  padding: 15px 35px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 700;
 `

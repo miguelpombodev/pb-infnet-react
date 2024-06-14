@@ -1,12 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useParams, useLocation } from "react-router-dom";
-import { HiOutlineHeart } from "react-icons/hi";
+import { FaRegThumbsDown, FaRegThumbsUp } from "react-icons/fa";
 
-import { AvatarBadge, AvatarTopicContainer, Container, ContainerHeader, TopicContainer, TopicDescriptionArea, TopicDescriptionContainer, TopicDescriptionDate } from "./style";
+
+import { AvatarBadge, AvatarTopicContainer, Container, ContainerHeader, NewCommentButton, NewCommentContainer, NewCommentInput, TopicContainer, TopicDescriptionArea, TopicDescriptionContainer, TopicDescriptionDate } from "./style";
 import AvatarImage from "../../components/AvatarImage";
 import { ITopicCardsComponentProps, ITopicComments } from "../../interfaces/Topics";
 import { IGroups } from "../../interfaces/Groups";
+import { UserContext } from "../../context";
 
 interface IResponses {
   commentsResponse: ITopicComments[];
@@ -15,9 +17,12 @@ interface IResponses {
 
 function PostPage () {
   const params = useParams();
+  const { userLogged } = useContext(UserContext)
   const [windowWidth] = useState(document.documentElement.clientWidth)
   const [comments, setComments] = useState<ITopicComments[]>([])
+  const [newComment, setNewComment] = useState('');
   const [topicLiked, setTopicLiked] = useState(false)
+  const [topicDisliked, setTopicDisliked] = useState(false)
   const location = useLocation().state as ITopicCardsComponentProps
 
   async function getCommentsFromAPI (): Promise<IResponses> {
@@ -30,11 +35,41 @@ function PostPage () {
     }
   }
 
-  const randomDate = () => {
+  function randomDate() {
     const rand = Math.floor(Math.random() * 365) * 1000 * 60 * 60 * 24;
     const dat = new Date(Date.now() + rand);
     return `${dat.getDate()}/${dat.getMonth() + 1}/${dat.getFullYear()}`;
   };
+
+  function handleNewCommentText(e) {
+    setNewComment(e.target.value);
+  };
+
+  function sendNewComment() {
+    const today = new Date();
+    const formattedDate = new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' }).format(today);
+
+    const newFormattedComment: ITopicComments = {
+      name: userLogged.nickname,
+      body: newComment,
+      group: userLogged.group,
+      date: formattedDate
+    }
+    setComments([...comments, newFormattedComment])
+  }
+
+  const handleLikesAndDislike = (optionRequired: string) => {
+    if (optionRequired === 'LIKE') {
+      setTopicLiked(true)
+      setTopicDisliked(false)
+    }
+
+    if (optionRequired === 'DISLIKE') {
+      setTopicDisliked(true)
+      setTopicLiked(false)
+    }
+  }
+
 
   useEffect(() => {
     async function fetchCommentsData () {
@@ -65,12 +100,15 @@ function PostPage () {
             <p>{location.authorName}</p>
             <span>{location.groupName}</span>
           </div>
-          <AvatarBadge>Badge Autor</AvatarBadge>
+          {/* <AvatarBadge>Badge Autor</AvatarBadge> */}
         </AvatarTopicContainer>
         <TopicDescriptionContainer>
           <div>
           <TopicDescriptionDate>22/10/2023</TopicDescriptionDate>
-          <HiOutlineHeart size={windowWidth > 979 ? 30 : 25} onClick={() => setTopicLiked(!topicLiked)} fill={topicLiked ? '#ff2929' : '#ffff'}/>
+          <span>
+          <FaRegThumbsUp size={windowWidth > 979 ? 30 : 25} onClick={() => handleLikesAndDislike("LIKE")} fill={topicLiked ? '#19dd19' : '#000'}/>
+          <FaRegThumbsDown size={windowWidth > 979 ? 30 : 25} onClick={() => handleLikesAndDislike("DISLIKE")} fill={topicDisliked ? '#ff2929' : '#000'}/>
+          </span>
           </div>
           <TopicDescriptionArea readOnly rows={10} value={location.topicDescription}/>
         </TopicDescriptionContainer>
@@ -96,6 +134,10 @@ function PostPage () {
       </TopicContainer>
       )
       )}
+      <NewCommentContainer>
+        <NewCommentInput placeholder="Digite um comentário!" onChange={handleNewCommentText}/>
+        <NewCommentButton onClick={sendNewComment}>Enviar</NewCommentButton>
+      </NewCommentContainer>
     </Container>
   )
 }
