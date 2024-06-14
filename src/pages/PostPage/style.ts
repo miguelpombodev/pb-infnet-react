@@ -6,9 +6,8 @@ export const Container = styled.section`
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
-  height: 100vh;
   gap: 20px;
-  margin-top: 40px;
+  margin: 40px 0;
   `
 
 export const ContainerHeader = styled.header`

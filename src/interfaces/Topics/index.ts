@@ -25,3 +25,10 @@ export interface ITopicCardsComponentProps {
   likesQuantity: number,
   commentsQuantity: number
 }
+
+
+export interface ITopicComments {
+  name: string;
+  body: string;
+  date?: string;
+}

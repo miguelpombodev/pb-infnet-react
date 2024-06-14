@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid'
+
+
 import IPosts from '../../interfaces/Posts';
 import TopicCard from '../../components/TopicCard';
 import { Container, GroupCardContainer, GroupCardList } from './style';
@@ -40,10 +43,13 @@ function Posts () {
               data.map(post => (
                 <TopicCard 
                 key={post.id} 
+                topicId={uuidv4()}
                 topicTitle={post.title} 
                 topicDescription={post.body}
                 likesQuantity={post.likes_count}
                 commentsQuantity={post.comments_count}
+                authorName='Author Example'
+                groupName='Group Example'
                 />
               ))
             ) : (
