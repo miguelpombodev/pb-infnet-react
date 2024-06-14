@@ -10,7 +10,7 @@ function Header () {
 
   return (
     <HeaderContainer>
-      <img src="/logo.png" width={100}/>
+      <Link to="/"><img src="/logo.png" width={100}/></Link>
       <LinkOptionsContainer>
         <Link to="/">Home</Link>
         <Link to="/posts">Tópicos</Link>
@@ -29,8 +29,8 @@ function Header () {
         }/>
       <BurgerMenuOptions openMenu={openMenu}>
         <LinkBurgerOptionsContainer>
-          <a>Home</a>
-          <a>Tópicos</a>
+          <Link to="/">Home</Link>
+          <Link to="/posts">Tópicos</Link>
           <a>Grupos</a>
           <a>FAQs</a>
           <a>Conta</a>

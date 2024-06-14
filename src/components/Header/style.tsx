@@ -43,7 +43,11 @@ export const LinkBurgerOptionsContainer = styled.div`
     justify-content: space-evenly;
     width: 20%;
     flex-direction: column;
-
+    
+    & >a:link {
+      text-decoration: none;
+      color: #fff;
+    }
 
   @media (min-width: 980px) {
     display: none;
