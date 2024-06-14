@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import theme from "../../global/styles/theme";
-import {Link} from 'react-router-dom'
 
 export const CardContainer = styled.div`
   border-radius: 10px;
@@ -17,7 +16,7 @@ export const CardContainer = styled.div`
   }
 `
 
-export const TopicInformationsContainer = styled(Link)`
+export const TopicInformationsContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 6px;

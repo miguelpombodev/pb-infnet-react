@@ -1,43 +1,31 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { HiOutlineHeart } from "react-icons/hi";
 import { FaRegComment } from "react-icons/fa";
 
 import AvatarImage from "../AvatarImage";
 import { CardContainer, CommentsAndLikesContainer, TopicDescription, TopicInformationsContainer, TopicTitle } from "./style";
+import { ITopicCardsComponentProps } from '../../interfaces/Topics';
 
-interface IAvatarProps {
-  avatarSourceLink: string
-  avatarAltTitle: string
-  avatarTitle: string
-}
-
-interface ITopicCardsProps {
-  topicId: string,
-  topicTitle: string,
-  topicDescription: string,
-  avatarProps?: IAvatarProps,
-  likesQuantity: number,
-  commentsQuantity: number
-}
-
-function TopicCard ({topicId, topicDescription, topicTitle, avatarProps, likesQuantity, commentsQuantity }: ITopicCardsProps) {
+function TopicCard (topicProps: ITopicCardsComponentProps) {
+  const navigate = useNavigate()
   const [topicLiked, setTopicLiked] = useState(false)
   const [windowWidth] = useState(document.documentElement.clientWidth)
 
   return (
     <CardContainer>
       <AvatarImage 
-          avatarSourceLink={avatarProps?.avatarSourceLink} 
-          avatarAltTitle={avatarProps?.avatarAltTitle} 
-          avatarTitle={avatarProps?.avatarTitle}
+          avatarSourceLink={topicProps.avatarProps?.avatarSourceLink} 
+          avatarAltTitle={topicProps.avatarProps?.avatarAltTitle} 
+          avatarTitle={topicProps.avatarProps?.avatarTitle}
         />
-      <TopicInformationsContainer  to={`/posts/${topicId}`}>
-        <TopicTitle>{topicTitle}</TopicTitle>
-        <TopicDescription>{topicDescription}</TopicDescription>
+      <TopicInformationsContainer onClick={() => {navigate(`/posts/${topicProps.topicId}`, {replace: true, state: topicProps})}}>
+        <TopicTitle>{topicProps.topicTitle}</TopicTitle>
+        <TopicDescription>{topicProps.topicDescription}</TopicDescription>
       </TopicInformationsContainer>
       <CommentsAndLikesContainer>
-        <span><HiOutlineHeart size={windowWidth > 979 ? 30 : 25} onClick={() => setTopicLiked(!topicLiked)} fill={topicLiked ? '#ff2929' : '#ffff'}/>{likesQuantity}</span>
-        <span><FaRegComment size={windowWidth > 979 ? 30 : 25} fill=''/>{commentsQuantity}</span>
+        <span><HiOutlineHeart size={windowWidth > 979 ? 30 : 25} onClick={() => setTopicLiked(!topicLiked)} fill={topicLiked ? '#ff2929' : '#ffff'}/>{topicProps.likesQuantity}</span>
+        <span><FaRegComment size={windowWidth > 979 ? 30 : 25} fill=''/>{topicProps.commentsQuantity}</span>
       </CommentsAndLikesContainer>
     </CardContainer>
   )

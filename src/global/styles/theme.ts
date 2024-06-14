@@ -4,6 +4,7 @@ export default {
     BLACK: "#000",
     WHITE: "#FFFF",
     LIGHTER_GRAY: "#D3D3D3",
+    MEDIUM_GRAY: "#A2A2A2",
     DARKER_GRAY: "#c4c4c4",
   },
 

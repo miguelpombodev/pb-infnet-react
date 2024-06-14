@@ -12,3 +12,12 @@ export interface ITopicInfos {
   comments_count: number,
   likes_count: number
 }
+
+export interface ITopicCardsComponentProps {
+  topicId: string,
+  topicTitle: string,
+  topicDescription: string,
+  avatarProps?: IAvatarInfos,
+  likesQuantity: number,
+  commentsQuantity: number
+}

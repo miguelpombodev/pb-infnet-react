@@ -1,16 +1,44 @@
 import styled from "styled-components";
+import theme from "../../global/styles/theme";
 
 export const Container = styled.section`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  height: 100vh;
+  gap: 20px;
+  margin-top: 40px;
   `
+
+export const ContainerHeader = styled.header`
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+  background-color: ${(theme.colors.MAIN_BLUE)};
+  border-radius: 10px;
+  padding: 5px 10px;
+
+  & > h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    width: 100%;
+    color: ${(theme.colors.WHITE)};
+  }
+
+  & > span {
+    color: ${(theme.colors.MEDIUM_GRAY)};
+  }
+`
 
 export const TopicContainer = styled.article`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   width: 90vw;
+  border: 2px solid ${(theme.colors.MAIN_BLUE)};
+  padding: 10px;
+  border-radius: 8px;
 `
 
 export const AvatarTopicContainer = styled.div`
@@ -19,18 +47,41 @@ export const AvatarTopicContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex: 0.25;
+
+  & > p {
+    font-size: 1.5rem;
+    margin-top: 10px;
+  }
+`
+
+export const AvatarBadge = styled.span`
+  padding: 8px;
+  font-weight: 700;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  background-color: ${(theme.colors.MAIN_BLUE)};
+  color: ${(theme.colors.WHITE)};
+  margin-top: 10px;
 `
 
 export const TopicDescriptionContainer = styled.div`
   display: flex;
   flex-direction: column;
   flex: 2;
+  padding: 10px;
+  border: 1px solid ${(theme.colors.BLACK)};
+  border-radius: 10px;
 `
 
-export const TopicDescriptionDate = styled.span``
+export const TopicDescriptionDate = styled.span`
+border-bottom: 1px solid ${(theme.colors.DARKER_GRAY)};
+padding-bottom: 3px;
+`
 
 export const TopicDescriptionArea = styled.textarea`
   outline: none;
   resize: none;
   border-radius: 8px;
+  border: none;
+  padding-top: 10px;
 `
