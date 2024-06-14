@@ -20,9 +20,7 @@ function Groups () {
     }
 
     fetchData()
-  })
-
-
+  }, [])
 
   return (
     <Container>

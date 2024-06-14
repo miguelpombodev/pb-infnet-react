@@ -46,7 +46,7 @@ function Home () {
     }
 
     fetchData()
-  })
+  }, [])
 
   return (
     <Container>
