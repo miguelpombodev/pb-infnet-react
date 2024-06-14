@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import theme from "../../global/styles/theme";
 
 export const Container = styled.div`
   display: flex;
@@ -47,8 +48,14 @@ export const TopicsListContainer = styled.div`
   gap: 10px;
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   & > div {
-    width: auto;
+    width: 100%;
   }
+`
+
+export const NoTopicsMessage = styled.span`
+  font-size: 1.5rem;
+  color: ${(theme.colors.LIGHTER_GRAY)};
 `

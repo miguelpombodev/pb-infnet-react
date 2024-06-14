@@ -1,17 +1,24 @@
 import { useContext } from "react"
 import AvatarImage from "../AvatarImage"
 import TopicCard from "../TopicCard"
-import { AvatarContainer, Container, TopicsContainer, TopicsHeaderContainer, TopicsListContainer } from "./style"
+import { AvatarContainer, Container, NoTopicsMessage, TopicsContainer, TopicsHeaderContainer, TopicsListContainer } from "./style"
 import { TopicsContexts } from "../../context"
 
-function UserProfile () {
+interface ILoggedUserProps {
+  nickname: string;
+  email: string,
+  avatarPicture: string,
+  group: string | null
+}
+function UserProfile (loggedUser: ILoggedUserProps) {
   const { userTopics } = useContext(TopicsContexts)
+  console.log(userTopics)
   return (
     <Container>
       <AvatarContainer>
-        <AvatarImage />
-        <span>Nome Usuario</span>
-        <span>Grupo Usuario</span>
+        <AvatarImage avatarSourceLink={loggedUser.avatarPicture}/>
+        <span>{loggedUser.nickname}</span>
+        <span>{loggedUser.group}</span>
       </AvatarContainer>
       <TopicsContainer>
         <TopicsHeaderContainer>
@@ -19,7 +26,11 @@ function UserProfile () {
         </TopicsHeaderContainer>
         <TopicsListContainer>
           {
-            userTopics.map(topic => (
+            userTopics.length === 0 ? (
+            <NoTopicsMessage>
+              Você ainda não tem tópicos cadastrados
+            </NoTopicsMessage> 
+            ) : userTopics.map(topic => (
               <TopicCard 
               key={topic.id} 
               topicId={topic.id} 

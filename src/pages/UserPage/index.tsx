@@ -6,7 +6,7 @@ import UserProfile from "../../components/UserProfile";
 import { UserContext } from "../../context";
 
 function UserPage () {
-  const [nome, setNome] = useState('');
+  const [nickname, setNome] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [erroNome, setErroNome] = useState('');
@@ -17,7 +17,7 @@ function UserPage () {
   const { userLogged, setUserLogged } = useContext(UserContext)
 
   const validarNome = () => {
-    if (nome.trim() === '' || /[^a-zA-Z\s]/.test(nome)) {
+    if (nickname.trim() === '' || /[^a-zA-Z\s]/.test(nickname)) {
       setErroNome('Nome inválido. Não use caracteres especiais.');
       return false;
     } else {
@@ -27,7 +27,7 @@ function UserPage () {
   };
 
   const validarPassword = () => {
-    if (nome.trim() === '' || /[^a-zA-Z\s]/.test(nome)) {
+    if (nickname.trim() === '' || /[^a-zA-Z\s]/.test(nickname)) {
       setErroPassword('Nome inválido. Não use caracteres especiais.');
       return false;
     } else {
@@ -83,8 +83,19 @@ function UserPage () {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isFormValid) {
-      setUserLogged(true)
-      localStorage.setItem("userLogged", JSON.stringify(true))
+      setUserLogged({
+        nickname: nickname,
+        email: email,
+        avatarPicture: "https://freepngimg.com/thumb/mario_bros/92438-mario-art-super-thumb-bros-download-free-image.png",
+        group: null
+      })
+
+      localStorage.setItem("userLogged", JSON.stringify({
+        nickname: nickname,
+        email: email,
+        avatarPicture: "https://freepngimg.com/thumb/mario_bros/92438-mario-art-super-thumb-bros-download-free-image.png",
+        group: null
+      }))
     } else {
       alert('Por favor, corrija os erros antes de enviar.');
     }
@@ -94,13 +105,13 @@ function UserPage () {
     const hasUserLogged = localStorage.getItem("userLogged")
 
     if(!hasUserLogged) {
-      setUserLogged(false)
+      setUserLogged({})
       return;
     }
 
-    const getLoggedUserValue = Boolean(JSON.parse(hasUserLogged))
+    const getLoggedUserValue = JSON.parse(hasUserLogged)
     setUserLogged(getLoggedUserValue)
-  }, [])
+  }, [setUserLogged])
 
   return (
     <Container>
@@ -112,11 +123,11 @@ function UserPage () {
           </FormHeader>
           <FormContentContainer>
           <InputContentContainer>
-            <FormInputLabel htmlFor="nome">Nome:</FormInputLabel>
+            <FormInputLabel htmlFor="nome">Nickname:</FormInputLabel>
             <FormInput
               type="text"
               id="nome"
-              value={nome}
+              value={nickname}
               onChange={handleChangeNome}
               onBlur={handleBlurNome}
             />
@@ -147,7 +158,12 @@ function UserPage () {
           </FormContentContainer>
           <FormSubmitButton type="submit" disabled={!isFormValid}>Enviar</FormSubmitButton>
         </Form>
-      ) : userLogged && (<UserProfile />)
+      ) : userLogged && (<UserProfile 
+                          nickname={userLogged.nickname}
+                          avatarPicture={userLogged.avatarPicture}
+                          email={userLogged.email}
+                          group={userLogged.group}
+                        />)
     }
     </Container>
   )

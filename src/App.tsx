@@ -13,7 +13,7 @@ import { UserContext, TopicsContexts } from "./context";
 import { ITopicInfos } from "./interfaces/Topics";
 
 function App() {
-  const [userLogged, setUserLogged] = useState(false)
+  const [userLogged, setUserLogged] = useState({})
   const [userTopics, setUserTopics] = useState<ITopicInfos[]>([])
 
   return (
