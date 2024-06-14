@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 
 import AvatarImage from "../../components/AvatarImage"
-import { Container, RankUser, RankUsersContainers, RankingListContainer } from "./style"
+import { Container, RankPointsContainer, RankUser, RankUserInfos, RankUsersContainers, RankingListContainer } from "./style"
 import { IRankUser } from "../../interfaces/Rank"
 
 function Ranking () {
@@ -30,10 +30,15 @@ function Ranking () {
       <RankingListContainer>
       {rankList && rankList.map(rank => (
             <RankUser>
-            <AvatarImage avatarSourceLink={rank.picture}/>
-              <div>
-                <span>{rank.name}</span>
-              </div>
+              <RankUserInfos>
+              <AvatarImage avatarSourceLink={rank.picture}/>
+                <div>
+                  <span>{rank.name}</span>
+                </div>
+              </RankUserInfos>
+              <RankPointsContainer>
+                <span>Pontos: {rank.points}</span>
+              </RankPointsContainer>
             </RankUser>
           ))}
       </RankingListContainer>

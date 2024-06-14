@@ -52,17 +52,32 @@ export const RankUser = styled.article`
   width: 90%;
   padding: 12px 20px;
 
-  & > div {
-    flex: 1;
-    padding-left: 20px;
-  }
-
-  & > div > span {
+  & > div > div > span {
     font-size: 1.5rem;
   }
 
   @media (min-width: 980px) {
     width: 60%;
     padding: 12px 40px;
+  }
+`
+
+export const RankUserInfos = styled.div`
+    display: flex;
+    align-items: center;
+    flex: 1;
+
+    & > div > span {
+    font-size: 1.5rem;
+    margin-left: 15px;
+  }
+`
+
+export const RankPointsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  & >  span {
+    font-size: 1.5rem;
   }
 `

@@ -1,26 +1,32 @@
 [
   {
     "name": "Blazeheart",
-    "picture": "https://cdn.dribbble.com/users/77598/screenshots/4509801/media/b6463dbd25ff2e4583e12f4e668e7319.png?resize=400x300&vertical=center"
+    "picture": "https://cdn.dribbble.com/users/77598/screenshots/4509801/media/b6463dbd25ff2e4583e12f4e668e7319.png?resize=400x300&vertical=center",
+    "points": 420
   },
   {
     "name": "Dex",
-    "picture": "https://freepngimg.com/thumb/league_of_legends/24530-8-jinx-transparent-image-thumb.png"
+    "picture": "https://freepngimg.com/thumb/league_of_legends/24530-8-jinx-transparent-image-thumb.png",
+    "points": 401
   },
   {
     "name": "Mystic",
-    "picture": "https://freepngimg.com/thumb/gta/37620-9-niko-bellic-transparent-image-thumb.png"
+    "picture": "https://freepngimg.com/thumb/gta/37620-9-niko-bellic-transparent-image-thumb.png",
+    "points": 385
   },
   {
     "name": "Joker Dad",
-    "picture": "https://freebiehive.com/wp-content/uploads/2024/01/Yuji-Itadori-PNG-758x473.jpg"
+    "picture": "https://freebiehive.com/wp-content/uploads/2024/01/Yuji-Itadori-PNG-758x473.jpg",
+    "points": 330
   },
   {
     "name": "Viber Snaky",
-    "picture": "https://w7.pngwing.com/pngs/981/305/png-transparent-akuma-ryu-street-fighter-v-street-fighter-ii-the-world-warrior-cammy-akuma-street-fighter-iv-desktop-wallpaper-street-fighter-thumbnail.png"
+    "picture": "https://w7.pngwing.com/pngs/981/305/png-transparent-akuma-ryu-street-fighter-v-street-fighter-ii-the-world-warrior-cammy-akuma-street-fighter-iv-desktop-wallpaper-street-fighter-thumbnail.png",
+    "points": 250
   },
   {
     "name": "xXReApErXx",
-    "picture": "https://w7.pngwing.com/pngs/849/176/png-transparent-street-fighter-iv-street-fighter-v-ryu-ken-masters-akuma-others-hand-boxing-glove-street-fighter-iv-thumbnail.png"
+    "picture": "https://w7.pngwing.com/pngs/849/176/png-transparent-street-fighter-iv-street-fighter-v-ryu-ken-masters-akuma-others-hand-boxing-glove-street-fighter-iv-thumbnail.png",
+    "points": 160
   }
 ]
