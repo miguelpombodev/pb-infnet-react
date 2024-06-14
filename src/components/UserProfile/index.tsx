@@ -1,8 +1,11 @@
+import { useContext } from "react"
 import AvatarImage from "../AvatarImage"
 import TopicCard from "../TopicCard"
 import { AvatarContainer, Container, TopicsContainer, TopicsHeaderContainer, TopicsListContainer } from "./style"
+import { TopicsContexts } from "../../context"
 
 function UserProfile () {
+  const { userTopics } = useContext(TopicsContexts)
   return (
     <Container>
       <AvatarContainer>
@@ -15,15 +18,22 @@ function UserProfile () {
           <h1>Perfil</h1>
         </TopicsHeaderContainer>
         <TopicsListContainer>
-        <TopicCard 
-              key="23123132-12313133"
-              topicId="12313313-2012313"
-              topicTitle="teste"
-              topicDescription="teste"
-              commentsQuantity={1}
-              authorName="qweq"
-              groupName="qeqeqweq"
+          {
+            userTopics.map(topic => (
+              <TopicCard 
+              key={topic.id} 
+              topicId={topic.id} 
+              topicTitle={topic.topicTitle} 
+              topicDescription={topic.topicDescription}
+              avatarProps={topic.avatar_infos}
+              commentsQuantity={topic.comments_count}
+              likesQuantity={topic.likes_count}
+              authorName={topic.authorName}
+              groupName={topic.groupName}
               />
+            ))
+          }
+
         </TopicsListContainer>
       </TopicsContainer>
     </Container>

@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useContext } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import axios from 'axios'
 
@@ -7,17 +7,19 @@ import { Container, CreateNewTopicContainer, GroupCardContainer, GroupCardList, 
 import Modal from "../../components/Modal"
 import TopicCard from "../../components/TopicCard"
 import { ITopicInfos } from '../../interfaces/Topics'
+import { TopicsContexts } from '../../context'
 
 function Home () {
   const [topics, setNewTopic] = useState<ITopicInfos[]>([])
   const [modalIsOpen, setModalIsOpen] = useState(false)
+  const { userTopics, setUserTopics } = useContext(TopicsContexts)
   const topicTitle = useRef(null)
   const topicContent = useRef(null)
 
   function sendNewTopicSubmit(event: Event) {
     event.preventDefault()
 
-    setNewTopic([...topics, {
+    const newTopic: ITopicInfos = {
       id: uuidv4(),
       topicTitle: topicTitle.current.value,
       topicDescription: topicContent.current.value,
@@ -27,14 +29,19 @@ function Home () {
         avatarTitle: "avatar_title"
       },
       comments_count: 0,
-      likes_count: 0
-    }])
+      likes_count: 0,
+      authorName: "",
+      groupName: ""
+    }
+
+    setNewTopic([...topics, newTopic])
+    setUserTopics([...userTopics, newTopic])
     setModalIsOpen(false)
   }
 
   const getPostFromAPI = async () => {
     const response = await axios.get<ITopicInfos[]>('/posts.json')
-
+    
     return response.data
   }
 
@@ -42,11 +49,12 @@ function Home () {
     async function fetchData () {
       const responseData = await getPostFromAPI()
 
-      setNewTopic(responseData)
+      const concattedArray = responseData.concat(userTopics)
+      setNewTopic(concattedArray)
     }
 
     fetchData()
-  }, [])
+  }, [userTopics])
 
   return (
     <Container>

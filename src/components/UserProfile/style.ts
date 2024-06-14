@@ -44,6 +44,9 @@ export const TopicsHeaderContainer = styled.div`
 export const TopicsListContainer = styled.div`
   width: 90%;
   padding: 20px 0;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
 
   & > div {
     width: auto;

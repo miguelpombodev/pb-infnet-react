@@ -24,7 +24,7 @@ function TopicCard (topicProps: ITopicCardsComponentProps) {
         <TopicDescription>{topicProps.topicDescription}</TopicDescription>
       </TopicInformationsContainer>
       <CommentsAndLikesContainer>
-        {topicProps.likesQuantity && <span><HiOutlineHeart size={windowWidth > 979 ? 30 : 25} onClick={() => setTopicLiked(!topicLiked)} fill={topicLiked ? '#ff2929' : '#ffff'}/>{topicProps.likesQuantity}</span>}
+        <span><HiOutlineHeart size={windowWidth > 979 ? 30 : 25} onClick={() => setTopicLiked(!topicLiked)} fill={topicLiked ? '#ff2929' : '#ffff'}/>{topicProps.likesQuantity}</span>
         <span><FaRegComment size={windowWidth > 979 ? 30 : 25} fill=''/>{topicProps.commentsQuantity}</span>
       </CommentsAndLikesContainer>
     </CardContainer>
