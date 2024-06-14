@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import Form from "../../components/Form";
 import { Container, FormContentContainer, FormErrorMessage, FormHeader, FormInput, FormInputLabel, FormSubmitButton, InputContentContainer } from "./style";
+import UserProfile from "../../components/UserProfile";
 
 function UserPage () {
   const [signUpUser, setSignUpUser] = useState(false);
@@ -131,7 +132,7 @@ function UserPage () {
           </FormContentContainer>
           <FormSubmitButton type="submit" disabled={!isFormValid}>Enviar</FormSubmitButton>
         </Form>
-      ) : <h1>logado</h1>
+      ) : <UserProfile />
     }
     </Container>
   )

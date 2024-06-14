@@ -3,9 +3,10 @@ import theme from "../../global/styles/theme";
 
 export const Container = styled.section`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   height: 100vh;
+  margin-top: 30px;
 `
 
 export const FormHeader = styled.header`

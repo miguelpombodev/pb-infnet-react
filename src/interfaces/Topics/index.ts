@@ -22,7 +22,7 @@ export interface ITopicCardsComponentProps {
   topicTitle: string,
   topicDescription: string,
   avatarProps?: IAvatarInfos,
-  likesQuantity: number,
+  likesQuantity?: number,
   commentsQuantity: number
 }
 
